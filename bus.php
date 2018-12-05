@@ -1,50 +1,72 @@
 <?php
-abstract class Transport
+abstract class Autobus
 {
-    public function move(){
-        return 'Merge Inainte';
+public function move(){
+return 'Autobuzul Porneste';
     }
-    public function rotateLeft(){
-        return 'vireaza  La Stinga';
+public function rotateLeft(){
+return 'Viram La Stinga';
     }
-    public function rotateRight(){
-        return 'vireaza La Dreapta';
+public function rotateRight(){
+return 'viram La Dreapta';
     }
-    
-    }
-
-
-
-
-class Autobus extends Transport {
-
-    public $name = 'BUS';
-    public function start()
-    {
-        return $this->name.' '. 'Starteaza';
-    }
-    public function stop()
-    {
-        return $this->name.' '. 'Stop';
-    }
-    
-    public function rotateRight()
-    {
-        return $this->name . ' ' . parent::rotateRight();
-    }
-    public function rotateLeft()
-    {
-        return $this->name . ' ' . parent::rotateLeft();
+public function stop(){
+return 'Oprire Autobus';
     }
 
 }
 
 
-$Autobus = new Autobus();
-echo $Autobus->start();
+class Car extends Autobus {
+
+public $name = 'Autobuzul';
+
+public function start()
+    {
+return $this->name.' '. 'Start Ruta';
+    }
+public function stop()
+    {
+return $this->name.' '. 'Stop Ruta';
+    }
+public function move($x)
+    {
+return $this->name .' '.$x;
+    }
+
+public function rotateRight()
+    {
+return $this->name . ' ' . parent::rotateRight();
+    }
+public function rotateLeft()
+    {
+return $this->name . ' ' . parent::rotateLeft();
+    }
+
+}
+
+
+$car = new Car();
+echo $car->start();
 ?><hr><?
-echo $Autobus->stop();
+echo $car->move('merge spre oprirea nr 1');
 ?><hr><?
-echo $Autobus->opendoor();
+echo $car->move('stopeaza la oprirea nr 1');
 ?><hr><?
-echo $Autobus->stop();
+echo $car->move('porneste la oprirea nr 2');
+?><hr><?
+echo $car->move('stopeaza la oprirea nr 2');
+?><hr><?
+echo $car->move('porneste la oprirea nr 3');
+?><hr><?
+echo $car->move('stopeaza la oprirea nr 3');
+?><hr><?
+echo $car->move('porneste la oprirea nr 4');
+?><hr><?
+echo $car->move('Stopeaza la oprirea nr 4');
+?><hr><?
+echo $car->move('porneste la oprirea nr 5');
+?><hr><?
+echo $car->move('Stopeaza la oprirea nr 5');
+?><hr><?
+echo $car->stop();
